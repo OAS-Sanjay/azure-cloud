@@ -12,7 +12,7 @@ jobs:
     steps:  
     - uses: Azure/login@v2.1.0
       with:
-        creds: ${{ secrets.azurecredentials }}
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
     - uses: Azure/get-keyvault-secrets@v1
       with: 
         keyvault: 'GitHubKeyVault'
