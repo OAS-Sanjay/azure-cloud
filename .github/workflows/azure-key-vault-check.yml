@@ -1,7 +1,7 @@
 name: Secret from KeyVault
 on: [push]
 jobs:
-  retrieveWithAction:
+  RetrieveKeyVaultSecrets:
     runs-on: ubuntu-latest
     steps:  
     - uses: Azure/login@v2.1.0
@@ -12,6 +12,8 @@ jobs:
       with: 
         keyvault: ${{ secrets.KEYVAULT_NAME }}
         secrets: 'GitHubSecret'
+        # keyVault: 'ccdl-eastus2-web-app-kv'
+        # secrets: 'ccdl-subc-id'
       id: mySecrets
     - name: Read secret from Azure Key Vault
       run: echo "The secret value is ${{ steps.mySecrets.outputs.GitHubSecret }}"
