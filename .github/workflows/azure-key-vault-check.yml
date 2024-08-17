@@ -8,8 +8,12 @@ jobs:
       with:
         auth-type: IDENTITY
         creds: ${{ secrets.AZURE_CREDENTIALS }}
+        subscriptionId: '1b6de2aa-ac73-44a2-8aaf-39652ecfdd86'
+    - name: Retrieve Key Vault secret
     - uses: Azure/get-keyvault-secrets@v1
       with: 
+        azureSubscription: '1b6de2aa-ac73-44a2-8aaf-39652ecfdd86'
+        resourceGroup: 'rg-azure-web-app'
         keyvault: ${{ secrets.KEYVAULT_NAME }}
         secrets: 'GitHubSecret'
         # keyVault: 'ccdl-eastus2-web-app-kv'
