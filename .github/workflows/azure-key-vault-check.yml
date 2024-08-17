@@ -1,6 +1,8 @@
 name: Secret from KeyVault
 on: 
-  workflow_dispatch
+  push: 
+    branches: [main]
+  # workflow_dispatch
 env:
   SECRETVALUE: ''
 
