@@ -1,11 +1,5 @@
 name: Secret from KeyVault
-on: 
-  push: 
-    branches: [main]
-  # workflow_dispatch
-env:
-  SECRETVALUE: ''
-
+on: [push]
 jobs:
   retrieveWithAction:
     runs-on: ubuntu-latest
@@ -15,6 +9,8 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - uses: Azure/get-keyvault-secrets@v1
       with: 
-        keyvault: 'GitHubKeyVault'
+        keyvault: ${{ secrets.KEYVAULT_NAME }}
         secrets: 'GitHubSecret'
       id: mySecrets
+    - name: Read secret from Azure Key Vault
+      run: echo "The secret value is ${{ steps.mySecrets.outputs.GitHubSecret }}"
