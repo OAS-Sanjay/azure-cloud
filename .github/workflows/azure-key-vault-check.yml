@@ -6,6 +6,7 @@ jobs:
     steps:  
     - uses: Azure/login@v2.1.0
       with:
+        auth-type: IDENTITY
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - uses: Azure/get-keyvault-secrets@v1
       with: 
